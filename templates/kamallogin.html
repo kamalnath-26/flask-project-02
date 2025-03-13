@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='kamal.css')}}">
+    <script src="{{url_for('static',filename='jquery-3.7.1.min.js')}}"></script>
+</head>
+<body>
+    <div class="login">
+        {% with messages=get_flashed_messages(with_categories=true)%}
+        {% if messages %}
+            {% for category,message in messages %}
+            <div  class="alert alert-{{category}}">{{message}}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <h1 style="color: rgb(226, 27, 166); text-align: center;">login</h1>
+        <hr>
+        <form action="/login" method="POST" autocomplete="off">
+            <div class="one">
+                <label>USER NAME </label>
+                <input type="text" name="name" required class="form-control">
+            </div>
+
+            <div class="one">
+                <label>PASSWORD </label>
+                <input type="password" name="password" required class="form-control">
+            </div>
+            <div>
+                <input style="margin-left: 50px; margin-top: 20px;" type="submit" value="login" class="btn btn-primary">
+                <input style="margin-left: 120px;  margin-top: 20px;" type="reset" value="clear" class="btn btn-danger">
+            </div>
+            <div class="a2">
+                <a href="{{url_for('register')}}">👈back</a>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    $(document).ready(function(){
+        $('.alert').hide(3000)
+    })
+</script>
+</html>

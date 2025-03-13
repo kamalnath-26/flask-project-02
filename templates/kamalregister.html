@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='kamal.css')}}">
+    <script src="{{url_for('static',filename='jquery-3.7.1.min.js')}}"></script>
+
+</head>
+<body>
+    <div class="register">
+        
+        <h1 style="color: red; text-align: center;">REGISTER FORM</h1>
+        <hr>
+        {% with messages=get_flashed_messages(with_categories=true)%}
+                {% if messages %}
+                    {% for category,message in messages %}
+                    <div  class="alert alert-{{category}}">{{message}}</div>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+        <form action="/" method="POST" autocomplete="off">
+
+        
+            <div class="one">
+                <label>EMAIL </label>
+                <input type="email" name="email" class="form-control">
+            </div>
+
+            <div class="one">
+                <label>USER NAME </label>
+                <input type="text" name="name" required class="form-control">
+            </div>
+
+            <div class="one">
+                <label>PASSWORD </label>
+                <input type="password" name="password" required class="form-control">
+            </div>
+
+           
+
+            <div>
+                <input style="margin-left: 50px; margin-top: 20px;" type="submit" class="btn btn-success">
+                <input style="margin-left: 120px;  margin-top: 20px;" type="reset" value="clear" class="btn btn-primary">
+            </div>
+
+            <div class="a1">
+                <a href="{{url_for('login')}}">login</a>
+            </div>
+
+            
+        </form>
+    </div>
+</body>
+<script>
+    $(document).ready(function(){
+        $('.alert').hide(3000)
+    })
+</script>
+</html>
